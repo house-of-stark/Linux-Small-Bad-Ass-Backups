@@ -1,7 +1,7 @@
 # Unified# Advanced Backup and Restore Utility
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-[![CI/CD](https://github.com/house-of-stark/backup-utility/actions/workflows/ci.yml/badge.svg)](https://github.com/house-of-stark/backup-utility/actions/workflows/ci.yml)
+[![CI/CD](https://github.com/house-of-stark/Linux-Small-Bad-Ass-Backups/actions/workflows/ci.yml/badge.svg)](https://github.com/house-of-stark/Linux-Small-Bad-Ass-Backups/actions/workflows/ci.yml)
 
 A robust and efficient backup and restore solution for Linux systems, featuring encryption, compression, and flexible backup strategies.
 
@@ -42,8 +42,8 @@ A robust and efficient backup and restore solution for Linux systems, featuring 
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/house-of-stark/backup-utility.git
-   cd backup-utility
+   git clone https://github.com/house-of-stark/Linux-Small-Bad-Ass-Backups.git
+   cd Linux-Small-Bad-Ass-Backups
    ```
 
 2. Make the scripts executable:
@@ -199,7 +199,7 @@ LOG_LEVEL="INFO"
 
 ## Contributing
 
-Contributions are welcome! Please read our [Contributing Guidelines](https://github.com/house-of-stark/backup-utility/blob/main/CONTRIBUTING.md) for details.
+Contributions are welcome! Please read our [Contributing Guidelines](https://github.com/house-of-stark/Linux-Small-Bad-Ass-Backups/blob/main/CONTRIBUTING.md) for details.
 
 1. Fork the repository
 2. Create a feature branch
