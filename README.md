@@ -1,7 +1,7 @@
 # Unified# Advanced Backup and Restore Utility
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-[![ShellCheck](https://github.com/yourusername/backup-utility/actions/workflows/shellcheck.yml/badge.svg)](https://github.com/yourusername/backup-utility/actions/workflows/shellcheck.yml)
+[![CI/CD](https://github.com/house-of-stark/backup-utility/actions/workflows/ci.yml/badge.svg)](https://github.com/house-of-stark/backup-utility/actions/workflows/ci.yml)
 
 A robust and efficient backup and restore solution for Linux systems, featuring encryption, compression, and flexible backup strategies.
 
@@ -42,7 +42,7 @@ A robust and efficient backup and restore solution for Linux systems, featuring 
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/yourusername/backup-utility.git
+   git clone https://github.com/house-of-stark/backup-utility.git
    cd backup-utility
    ```
 
@@ -199,7 +199,7 @@ LOG_LEVEL="INFO"
 
 ## Contributing
 
-Contributions are welcome! Please read our [Contributing Guidelines](CONTRIBUTING.md) for details.
+Contributions are welcome! Please read our [Contributing Guidelines](https://github.com/house-of-stark/backup-utility/blob/main/CONTRIBUTING.md) for details.
 
 1. Fork the repository
 2. Create a feature branch
@@ -213,7 +213,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ---
 
-Created with ❤️ by [Your Name] - [your-email@example.com](mailto:your-email@example.com)
+Created with ❤️ by [house-of-stark](https://github.com/house-of-stark)
 
 # Unified Backup and Restore Scripts
 
