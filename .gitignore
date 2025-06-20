@@ -1,0 +1,66 @@
+# Backup files
+*.bak
+*.backup
+*.swp
+*~
+
+# Temporary files
+/tmp/
+/tmp-*
+*.tmp
+*.temp
+
+# System files
+.DS_Store
+.idea/
+.vscode/
+*.sublime-workspace
+*.sublime-project
+
+# Environment variables
+.env
+.env.*
+!.env.example
+
+# Logs
+*.log
+logs/
+
+# Test directories
+/test-*
+/backup-test-*
+
+# Local configuration
+local-settings.sh
+
+# Ignore test data and directories used during testing
+/test-data/
+/backup-old/
+/backup-new/
+/performance-test-*.log
+
+# Ignore any backup files created by the script
+*-backup-*
+!*-backup-*.tar.gz.gpg
+!*-backup-*.list.gpg
+
+# Ignore any local overrides
+local/
+
+# Ignore any personal files
+*~
+*.swp
+*.swo
+
+# Ignore any test output
+/test_output/
+
+# Ignore any virtual environment
+venv/
+env/
+.venv/
+
+# Ignore any IDE specific files
+.idea/
+.vscode/
+*.code-workspace

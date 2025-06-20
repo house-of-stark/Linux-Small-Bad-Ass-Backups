@@ -1,0 +1,68 @@
+name: CI/CD Pipeline
+
+on:
+  push:
+    branches: [ main, master ]
+  pull_request:
+    branches: [ main, master ]
+
+jobs:
+  test:
+    name: Run Tests
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+    
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.x'
+    
+    - name: Install dependencies
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y shellcheck shunit2
+        pip install --upgrade pip
+        pip install pre-commit
+    
+    - name: Run ShellCheck
+      run: |
+        find . -type f -name "*.sh" -exec shellcheck {} +
+    
+    - name: Run unit tests
+      run: |
+        chmod +x run_tests.sh
+        ./run_tests.sh unit
+    
+    - name: Run integration tests
+      run: |
+        ./run_tests.sh integration
+    
+    - name: Run all tests
+      run: |
+        ./run_tests.sh all
+
+  release:
+    name: Create Release
+    needs: test
+    if: github.event_name == 'push' && (github.ref == 'refs/heads/main' || github.ref == 'refs/heads/master')
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+    
+    - name: Get version from CHANGELOG.md
+      id: version
+      run: |
+        VERSION=$(grep -m 1 -oE '\[.*\]' CHANGELOG.md | head -1 | tr -d '[]')
+        echo "version=$VERSION" >> $GITHUB_OUTPUT
+    
+    - name: Create Release
+      uses: softprops/action-gh-release@v1
+      with:
+        name: v${{ steps.version.outputs.version }}
+        tag_name: v${{ steps.version.outputs.version }}
+        body_path: CHANGELOG.md
+        draft: false
+        prerelease: false
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
