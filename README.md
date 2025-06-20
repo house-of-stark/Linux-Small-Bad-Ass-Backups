@@ -1,9 +1,9 @@
-# 🐖 Unified# Advanced Backup and Restore Utility ⚡
+# 🐖 Linux Bad Ass Backups ⚡
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![CI/CD](https://github.com/house-of-stark/Linux-Small-Bad-Ass-Backups/actions/workflows/ci.yml/badge.svg)](https://github.com/house-of-stark/Linux-Small-Bad-Ass-Backups/actions/workflows/ci.yml)
 
-A robust and efficient backup and restore solution for Linux systems, featuring encryption, compression, and flexible backup strategies.
+A robust and efficient backup and restore solution for Linux systems, featuring encryption, parallel compression, and flexible backup strategies.
 
 ## Features
 
@@ -69,8 +69,8 @@ This backup solution is engineered for speed, leveraging parallel processing to 
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/house-of-stark/Linux-Small-Bad-Ass-Backups.git
-   cd Linux-Small-Bad-Ass-Backups
+   git clone https://github.com/house-of-stark/Linux-Bad-Ass-Backups.git
+   cd Linux-Bad-Ass-Backups
    ```
 
 2. Make the scripts executable:
