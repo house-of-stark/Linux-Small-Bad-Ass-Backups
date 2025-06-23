@@ -1,4 +1,4 @@
-# 🐖 Linux Bad Ass Backups ⚡
+# 🐖 Linux Small Bad Ass Backups ⚡
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![CI/CD](https://github.com/house-of-stark/Linux-Small-Bad-Ass-Backups/actions/workflows/ci.yml/badge.svg)](https://github.com/house-of-stark/Linux-Small-Bad-Ass-Backups/actions/workflows/ci.yml)
