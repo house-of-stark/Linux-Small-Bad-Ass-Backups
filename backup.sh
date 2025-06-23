@@ -160,6 +160,7 @@ check_requirements() {
         log_info "pv not found. Progress bar will not be displayed. Install with: sudo apt-get install pv"
     else
         PV_CMD="pv -p -t -e -r -b -a"
+        export PV_CMD  # Make it available to subprocesses
     fi
     
     log_info "All requirements check passed successfully"
@@ -405,10 +406,24 @@ backup_home() {
     # Create the archive with proper relative paths and exclusions
     log_info "Creating tar archive of: $target_dir"
     log_info "Excluding patterns: ${exclude_patterns[*]}"
-    log_info "Command: tar -czf \"$backup_file\" ${exclude_patterns[*]} \"$target_dir\""
     
-    # Run tar with detailed output and exclusions
-    if ! tar -cvzf "$backup_file" ${exclude_patterns[@]} "$target_dir"; then
+    # Check if pv is available for progress display
+    local pv_cmd="cat"
+    if command -v pv >/dev/null 2>&1; then
+        pv_cmd="pv -s ${total_size}"
+        log_info "Using pv for progress display"
+    else
+        log_warning "pv not found. Install with: sudo apt-get install pv for progress bar"
+    fi
+    
+    # Build tar command
+    local tar_cmd=(tar -cf - ${exclude_patterns[@]} "$target_dir")
+    
+    # Log the command being executed
+    log_info "Running: (cd \"$base_dir\" && ${tar_cmd[*]} | $pv_cmd | $COMPRESSOR -c -${GZIP_LEVEL} > \"$backup_file\")"
+    
+    # Run tar with progress if pv is available
+    if ! (cd "$base_dir" && ${tar_cmd[@]} | $pv_cmd | $COMPRESSOR -c -${GZIP_LEVEL} > "$backup_file"); then
         log_error "Failed to create backup archive"
         log_info "Check disk space: $(df -h . | grep -v Filesystem)"
         return 1
