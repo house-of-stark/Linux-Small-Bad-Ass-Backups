@@ -394,12 +394,21 @@ backup_home() {
     # Get total size of files to be backed up
     local total_size=$(du -sb "$source_dir" 2>/dev/null | awk '{print $1}')
     
-    # Create the archive with proper relative paths
-    log_info "Creating tar archive of: $target_dir"
-    log_info "Command: tar -czf \"$backup_file\" \"$target_dir\""
+    # Prepare exclude patterns
+    local exclude_patterns=(
+        "--exclude=${BACKUP_DIR}"  # Exclude the backup directory itself
+        "--exclude=*/${BACKUP_DIR}/*"  # Exclude any backup directory within the target
+        "--exclude=*/\.cache/*"  # Common directories to exclude
+        "--exclude=*/\.local/share/Trash/*"  # Trash
+    )
     
-    # Run tar with detailed output
-    if ! tar -cvzf "$backup_file" "$target_dir"; then
+    # Create the archive with proper relative paths and exclusions
+    log_info "Creating tar archive of: $target_dir"
+    log_info "Excluding patterns: ${exclude_patterns[*]}"
+    log_info "Command: tar -czf \"$backup_file\" ${exclude_patterns[*]} \"$target_dir\""
+    
+    # Run tar with detailed output and exclusions
+    if ! tar -cvzf "$backup_file" ${exclude_patterns[@]} "$target_dir"; then
         log_error "Failed to create backup archive"
         log_info "Check disk space: $(df -h . | grep -v Filesystem)"
         return 1
